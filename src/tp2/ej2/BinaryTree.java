@@ -1,5 +1,4 @@
-package tp2.ej1;
-
+package tp2.ej2;
 
 
 public class BinaryTree <T> {
@@ -88,13 +87,10 @@ public class BinaryTree <T> {
 				hojas += this.getRightChild().contarHojas(hojas);
 			}
 		}
-		
 	}
-		
-		
-    	 
+		 
     public BinaryTree<T> espejo(){
-		       		  
+    	
  	   return null;
     }
 
