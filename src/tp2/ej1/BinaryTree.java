@@ -76,22 +76,9 @@ public class BinaryTree <T> {
 		return this.getData().toString();
 	}
 
-	public  int contarHojas(int hojas = 0) {
-		if (this.isLeaf()){
-			return 1;
-		}
-		else { 
-			if (this.hasLeftChild()) {
-				hojas += this.getLeftChild().contarHojas(hojas);
-			}
-			if (this.hasRightChild()) {
-				hojas += this.getRightChild().contarHojas(hojas);
-			}
-		}
-		
+	public  int contarHojas() {
+		return 0;
 	}
-		
-		
     	 
     public BinaryTree<T> espejo(){
 		       		  
@@ -104,4 +91,3 @@ public class BinaryTree <T> {
    }
 		
 }
-
