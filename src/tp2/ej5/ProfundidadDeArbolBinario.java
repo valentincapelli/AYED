@@ -4,49 +4,47 @@ import tp1.ej8.Queue;
 import tp2.ej2.BinaryTree;
 
 public class ProfundidadDeArbolBinario {
-	BinaryTree<Integer> ab;
+	private BinaryTree<Integer> ab;
 	
 	public ProfundidadDeArbolBinario (BinaryTree<Integer> ab) {
 		this.ab = ab;
 	}
 	
-	public Integer sumaElementosProfundidad(int profundidad) {
+	public int sumaElementosProfundidad(int profundidad) {
 		if (ab.isEmpty()) {
 			System.out.println("El arbol esta vacio");
 			return 0;
 		}
 		else {
-			BinaryTree<Integer> ab = null;
+			BinaryTree<Integer> aux = null;
 			Queue<BinaryTree<Integer>> cola = new Queue<BinaryTree<Integer>>();
-			int L = 0;
-			int suma = 0;
-			cola.enqueue(this.ab);
+			cola.enqueue(ab);
 			cola.enqueue(null);
-			while (!cola.isEmpty()) {
-				ab = cola.dequeue();
-				if (ab != null) {
-					if (L == profundidad) {
-						System.out.print(ab.getData());
-						suma = suma + ab.getData();
+			int Level = 0;
+			int sum = 0;
+			while (!cola.isEmpty() && Level <= profundidad) {
+				aux = cola.dequeue();
+				if (aux != null) {
+					if (Level == profundidad) {
+						sum = sum + aux.getData();
 					}
-					else break;
-					if (ab.hasLeftChild()) {
-						cola.enqueue(ab.getLeftChild());
+					if (aux.hasLeftChild()) {
+						cola.enqueue(aux.getLeftChild());
 					}
-					if (ab.hasRightChild()) {
-						cola.enqueue(ab.getRightChild());
+					if (aux.hasRightChild()) {
+						cola.enqueue(aux.getRightChild());
 					}
 				} else if (!cola.isEmpty()) {
 					System.out.println();
 					cola.enqueue(null);
-					L++;
+					Level++;
 				}
 			}
-			return suma;
+			return sum;
 		}
 	}
 	public static void main(String[] args) {
-		BinaryTree<Integer> ab = new BinaryTree<Integer>(40);
+		BinaryTree<Integer> arbol = new BinaryTree<Integer>(41);
         BinaryTree<Integer> hijoIzquierdo = new BinaryTree<Integer>(25);
         BinaryTree<Integer> hijoDerecho = new BinaryTree<Integer>(78);
         BinaryTree<Integer> TreintaDos = new BinaryTree<Integer>(32);
@@ -58,10 +56,10 @@ public class ProfundidadDeArbolBinario {
         hijoDerecho.addLeftChild(new BinaryTree<Integer>(20));
         hijoDerecho.addRightChild(new BinaryTree<Integer>(50));
 
-        ab.addLeftChild(hijoIzquierdo);
-        ab.addRightChild(hijoDerecho);
+        arbol.addLeftChild(hijoIzquierdo);
+        arbol.addRightChild(hijoDerecho);
         
-        ProfundidadDeArbolBinario prof = new ProfundidadDeArbolBinario(ab);
-        System.out.println(prof.sumaElementosProfundidad(2));
+        ProfundidadDeArbolBinario prof = new ProfundidadDeArbolBinario(arbol);
+        System.out.println(prof.sumaElementosProfundidad(0));
 	}
 }

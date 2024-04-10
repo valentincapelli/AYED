@@ -2,10 +2,10 @@ package tp2.ej4;
 
 import tp2.ej2.BinaryTree;
 
-public class RedBinariaLLena {
+public class RedBinariaLlena {
 	BinaryTree<Integer> ab;
 	
-	public RedBinariaLLena(BinaryTree<Integer> ab) {
+	public RedBinariaLlena(BinaryTree<Integer> ab) {
 		this.ab = ab;
 	}
 	
@@ -46,7 +46,7 @@ public class RedBinariaLLena {
         ab.addLeftChild(hijoIzquierdo);
         ab.addRightChild(hijoDerecho);
         
-        RedBinariaLLena rb = new RedBinariaLLena(ab);
+        RedBinariaLlena rb = new RedBinariaLlena(ab);
         
         System.out.println(rb.retardoReenvio());
 	}
