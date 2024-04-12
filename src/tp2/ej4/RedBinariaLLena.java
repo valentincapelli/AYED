@@ -10,38 +10,36 @@ public class RedBinariaLlena {
 	}
 	
 	public int retardoReenvio() {
-		int max = 0;
-		int sumaActual = 0;
-		return this.calcularRetardo1(ab, max, sumaActual);
+		if (ab == null | ab.isEmpty()) {
+			return 0;
+		} else 
+			return recorridoAuxiliar(ab);
 	}
 	
-	private int calcularRetardo1(BinaryTree<Integer> ab, int max, int sumaActual) {
-		if (ab.isLeaf()) {
-			if (sumaActual > max) {
-				max = sumaActual;
-			}
+	private int recorridoAuxiliar(BinaryTree<Integer> arbol) {
+		if (arbol.isLeaf()) 
+			return arbol.getData();
+		else {
+			int izq = 0;
+			int der = 0;
+			//if (arbol.hasLeftChild())
+			izq = recorridoAuxiliar(arbol.getLeftChild());
+			//if (arbol.hasRightChild())
+			der = recorridoAuxiliar(arbol.getRightChild());
+			
+			return Math.max(izq, der) + arbol.getData();
 		}
-		if (ab.hasLeftChild()) {
-			this.calcularRetardo1(ab.getLeftChild(),max, sumaActual+ ab.getData());
-		}
-		if (ab.hasRightChild()) {
-			this.calcularRetardo1(ab.getRightChild(),max, sumaActual+ ab.getData());
-		}
-		return max;	
 	}
 	
 	public static void main(String[] args) {
-		BinaryTree<Integer> ab = new BinaryTree<Integer>(40);
-        BinaryTree<Integer> hijoIzquierdo = new BinaryTree<Integer>(25);
-        BinaryTree<Integer> hijoDerecho = new BinaryTree<Integer>(78);
-        BinaryTree<Integer> TreintaDos = new BinaryTree<Integer>(32);
+		BinaryTree<Integer> ab = new BinaryTree<Integer>(5);
+        BinaryTree<Integer> hijoIzquierdo = new BinaryTree<Integer>(2);
+        BinaryTree<Integer> hijoDerecho = new BinaryTree<Integer>(10);
 
-        hijoIzquierdo.addLeftChild(new BinaryTree<Integer>(10));
-        hijoIzquierdo.addRightChild(TreintaDos);
-        TreintaDos.addRightChild(new BinaryTree <Integer>(66));
-
-        hijoDerecho.addLeftChild(new BinaryTree<Integer>(20));
-        hijoDerecho.addRightChild(new BinaryTree<Integer>(50));
+        hijoIzquierdo.addLeftChild(new BinaryTree<Integer>(1));
+        hijoIzquierdo.addRightChild(new BinaryTree<Integer>(4));
+        hijoDerecho.addLeftChild(new BinaryTree<Integer>(8));
+        hijoDerecho.addRightChild(new BinaryTree<Integer>(12));
 
         ab.addLeftChild(hijoIzquierdo);
         ab.addRightChild(hijoDerecho);
