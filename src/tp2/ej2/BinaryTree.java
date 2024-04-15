@@ -117,7 +117,7 @@ public class BinaryTree <T> {
     	 while (!cola.isEmpty()) {
     		 ab = cola.dequeue();
     		 if (ab != null) {
-    			 System.out.print(ab.getData());
+    			 System.out.print(ab.getData() + " ");
     			 if (ab.hasLeftChild()) {
     				 cola.enqueue(ab.getLeftChild());
     			 }
