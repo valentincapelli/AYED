@@ -93,19 +93,30 @@ public class GeneralTree<T> {
     
     public int nivel(T dato) {
     	int Level = 0;
-    	int result;
+    	int result = -1;
+    	boolean encontre = false;
     	GeneralTree<T> tree_aux;
     	Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
     	queue.enqueue(this);
-    	while (!queue.isEmpty()) {
+    	queue.enqueue(null);
+    	while (!queue.isEmpty() && !encontre) {
     		 tree_aux = queue.dequeue();
-    		 if (tree_aux.getData() == dato) {
-    			 return Level;
-    		 }
-    		 List<GeneralTree<T>> children = tree_aux.getChildren();
-    		 for (GeneralTree<T> child: children) {
-    			 queue.enqueue(child);
-    		 }
+    		 if (tree_aux != null && !encontre) {
+    			 if (tree_aux.getData() == dato) {
+    				 result = Level;
+    				 encontre = true;
+    			 } else {
+    				 List<GeneralTree<T>> children = tree_aux.getChildren();
+    	    		 for (GeneralTree<T> child: children) {
+    	    			 queue.enqueue(child);
+    	    		 }
+    			 }
+    		  } else {
+    			  if (!queue.isEmpty()) {
+    				  queue.enqueue(null);
+    				  Level++;
+    			  }
+    		  }
     	}
     	System.out.println("El dato no se encuentra en el arbol");
     	return -1;

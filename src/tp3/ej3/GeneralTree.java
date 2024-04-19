@@ -90,6 +90,64 @@ public class GeneralTree<T> {
     	}
     	return maxHeight;
     }
-
-
+    
+    public int nivel(T dato) {
+    	int Level = 0;
+    	int result = -1;
+    	boolean encontre = false;
+    	GeneralTree<T> tree_aux;
+    	Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
+    	queue.enqueue(this);
+    	queue.enqueue(null);
+    	while (!queue.isEmpty() && !encontre) {
+    	     tree_aux = queue.dequeue();
+    		 if (tree_aux != null) {
+    			 if (tree_aux.getData() == dato) {
+    				 result = Level;
+    				 encontre = true;
+    			 } else {
+    				 List<GeneralTree<T>> children = tree_aux.getChildren();
+    				 for (GeneralTree<T> child: children) {
+    					 queue.enqueue(child);
+    				 }
+        		 }
+    		 }else {
+    			 if (!queue.isEmpty()) {
+    				 queue.enqueue(null);
+    				 Level++;
+    			 }
+    		 }
+    	}
+    	System.out.println("El dato no se encuentra en el arbol");
+    	return result;
+    }
+    
+    	/* ppublic int altura(T dato) { FORMA DE HACER ALTURA POR NIVELES
+    	int Level = 0;
+    	int result;
+    	GeneralTree<T> tree_aux;
+    	Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
+    	queue.enqueue(this);
+    	queue.enqueue(null);
+    	while (!queue.isEmpty()) {
+    		 tree_aux = queue.dequeue();
+    		 if (tree_aux != null) {
+    			 for (GeneralTree<T> child: tree_aux.getChildren()) {
+        			 queue.enqueue(child);
+        		 }
+    		 } else {
+    			 if (!queue.isEmpty()) {
+    				 queue.enqueue(null);
+    				 Level++;
+    			 }
+    		 }
+    		 return Level;
+    	}
+    }
+    	  
+    	  ejercicio 5
+    	   primero buscar el ancestro, una vez que lo encontre busco si se encuentra el dato dentro del subarbol del ancestro
+    	   un metodo que haga la busqueda que recibe un arbol y un dato, retorna dato si lo encuentra y si no devuelve null
+    	 */	
+    
 }
