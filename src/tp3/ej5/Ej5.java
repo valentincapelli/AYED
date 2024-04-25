@@ -1,30 +1,12 @@
-package tp3.ej3;
+package tp3.ej5;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import tp1.ej8.Queue;
-
-public class TestGeneralTree {
-	
-	public List<String> traversalLevel(GeneralTree<String> tree) {
-
-    	List<String> result = new LinkedList<String>();
-    	GeneralTree<String> tree_aux;
-    	Queue<GeneralTree<String>> queue = new Queue<GeneralTree<String>>();
-    	queue.enqueue(tree);
-    	while (!queue.isEmpty()) {
-    		tree_aux = queue.dequeue();
-    		result.add(tree_aux.getData());
-    		List<GeneralTree<String>> children = tree_aux.getChildren();
-    		for (GeneralTree<String> child: children) {
-    				queue.enqueue(child);
-    		}
-    	}
-    	return result;
-    }
+public class Ej5 {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		GeneralTree<String> a1 = new GeneralTree<String>("1");
 		List<GeneralTree<String>> children2 = new LinkedList<GeneralTree<String>>();
 		children2.add(new GeneralTree<String>("21"));
@@ -42,9 +24,7 @@ public class TestGeneralTree {
 		GeneralTree<String> a = new GeneralTree<String>("0", children);
 		System.out.println("Datos del Arbol: ");
 		a.printPreOrder();
-		
-		System.out.println("El dato ingresado se encuentra en el nivel " +a.nivel("32"));
-		System.out.println("La cantidad maxima de nodos en un nivel es: " + a.ancho());
-		}
+		System.out.println(a.esAncestro("2", "32"));
 	}
 
+}

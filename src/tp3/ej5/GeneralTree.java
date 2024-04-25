@@ -1,4 +1,4 @@
-package tp3.ej3;
+package tp3.ej5;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -145,6 +145,31 @@ public class GeneralTree<T> {
     		 }
     	}
     	return max;
+    }
+    
+    public boolean esAncestro(T a, T b) {
+    	GeneralTree<T> subArbol = buscarNodo(this,a);
+    	boolean result = false;
+    	if (subArbol != null) 
+    		result = (buscarNodo(subArbol,b) != null);
+    	return result;
+    }
+    
+    private GeneralTree<T> buscarNodo(GeneralTree<T> arbol , T dato) { 
+    	GeneralTree<T> subArbol = null;
+    	if (arbol.getData().equals(dato)) {
+    		subArbol = arbol;
+    	}else {
+    		if (!arbol.isLeaf()) {
+    			List<GeneralTree<T>> children = arbol.getChildren();
+    			for (GeneralTree<T> child: children) {
+    				subArbol = buscarNodo(child,dato);
+    				if (subArbol != null) return subArbol; // break;
+    			}
+    		}
+    	}
+    	return subArbol;
+    		    		
     }
     
     	/* ppublic int altura(T dato) { FORMA DE HACER ALTURA POR NIVELES
