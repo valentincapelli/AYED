@@ -1,7 +1,5 @@
 package tp3.ej6;
 
-import java.util.List;
-
 import tp3.ej5.GeneralTree;
 
 public class RedDeAguaPotable {

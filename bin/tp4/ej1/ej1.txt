@@ -1,0 +1,26 @@
+Ejercicio 1
+
+1_ a.- Para que usted pueda experimentar el tiempo que demora cada uno de los dos algoritmos en
+forma empírica, usted debe ejecutar cada uno de ellos, con distintas cantidades de elementos y
+completar la tabla. Luego haga la gráfica para comparar los tiempos de ambos algoritmos. Tenga
+en cuenta que el algoritmo posee dos constantes CANTIDAD_CUENTAS y CANTIDAD_CONSULTAS,
+sin embargo, por simplicidad, ambas toman el mismo valor. Sólo necesita modificar
+CANTIDAD_CUENTAS .
+
+Nº Cuentas (y consultas) / procesarMovimientos / procesarMovimientosOptimizado
+1.000                    / 0.018seg            / 0.0seg
+10.000                   / 0.391seg            / 0.003seg
+25.000                   / 3.466seg            / 0.006seg
+50.000                   / 17.774seg           / 0.011seg
+100.000                  / 71.594seg           / 0.02seg
+
+b.- ¿Por qué procesarMovimientos es tan ineficiente? Tenga en cuenta que pueden existir
+millones de movimientos diarios que abarquen gran parte de las cuentas bancarias.
+
+_ Por que realiza un for dentro de otro for. Es decir, por cada consulta en el vector de
+consultas recorre cuentas[] entre el "desde" y el "hasta" de la consulta sumando el valor.
+
+c.- ¿En qué se diferencia procesarMovimientosOptimizado? Observe las operaciones que se
+realizan para cada consulta.
+
+- Consultar.

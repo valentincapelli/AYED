@@ -1,0 +1,29 @@
+Ejercicio 5
+Se necesita generar una permutación random de los n primeros números enteros. Por ejemplo
+[4,3,1,0,2] es una permutación legal, pero [0,4,1,2,4] no lo es, porque un número está duplicado
+(el 4) y otro no está (el 3). Presentamos tres algoritmos para solucionar este problema. Asumimos
+la existencia de un generador de números random, ran_int (i,j) el cual genera en tiempo constante,
+enteros entre i y j inclusive con igual probabilidad (esto significa que puede retornar el mismo valor
+más de una vez). También suponemos el mensaje swap() que intercambia dos datos entre sí.
+
+a. Analizar si todos los algoritmos terminan o alguno puede quedar en loop infinito.
+
+b. Describa con palabras la cantidad de operaciones que realizan.
+
+- public static int[] randomUno(int n)
+    - Se hace un for desde i = 0 hasta i < n 
+    - Se hace while hasta generar un valor que no se encuentra en el array
+    - Al salir del while se agrega el numero en la posicion i
+
+- public static int[] randomDos(int n)
+    - Se crea dos vectores, uno con los numero y otro de booleanos.
+    - Se inicializa el vector de booleanos en false.
+    - Se recorre todo el vector de numeros.
+    - Dentro del for:
+        - Se genera un numero random.
+        - Si ese numero se encuentra en el vector de booleanos(T) se genera otro numero.
+        - Sino se encuentra se guarda el numero generado en la posicion i del vector.
+        - Se actualiza el valor del vector de booleanos en true en la posicion del numero generado.
+
+- public static int[] randomTres(int n)
+    - Consultar.

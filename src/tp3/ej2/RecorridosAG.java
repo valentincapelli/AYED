@@ -1,6 +1,5 @@
 package tp3.ej2;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
