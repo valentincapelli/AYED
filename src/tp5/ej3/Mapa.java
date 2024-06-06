@@ -85,4 +85,40 @@ public class Mapa {
 		}
 	}
 
+	public List<String> caminoMasCorto(String ciudad1, String ciudad2) {
+		List<String> lista = new LinkedList<String>();
+		buscarCiudadConDistancia(mapaCiudades, ciudad1, ciudad2, lista);
+		return lista;		
+	}
+
+	private void buscarCiudadConDistancia(Graph<String> grafo, String ciudad1, String ciudad2, List <String> listaFinal){
+		boolean [] visitados = new boolean [grafo.getSize()];
+		Vertex<String> city1 = grafo.search(ciudad1);
+		List<String> listaActual = new LinkedList<String>();
+		dfs3(grafo, city1, ciudad2, listaFinal, listaActual, visitados, 0, 9999);
+	}
+
+	private void dfs3(Graph<String> grafo, Vertex<String> v, String ciudad2, List<String> listaFinal, List<String> listaActual, boolean [] visitados, int distancia, int minDistancia) {
+		if(v.getData() == ciudad2){
+			if (distancia < minDistancia) 
+				listaFinal.addAll(listaActual);
+		}
+
+		else{
+			listaActual.add(v.getData());
+			visitados[v.getPosition()] = true;
+			}
+		 	// Pido adyacentes
+		 	List<Edge<String>> ady = grafo.getEdges(v);
+		 	for(Edge<String> edge : ady){
+		 		// Vertice destino de la arista
+		 		Vertex<String> destino = edge.getTarget();
+		 		if(!visitados[destino.getPosition()]){
+		 			dfs3(grafo, destino, ciudad2, listaFinal, listaActual, visitados, distancia+edge.getWeight(), minDistancia);
+		 		}
+		 	}
+		 	listaActual.remove(listaActual.size()-1);
+		}
+	}
+
 }
