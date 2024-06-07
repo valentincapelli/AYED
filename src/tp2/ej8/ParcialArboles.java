@@ -10,54 +10,39 @@ public class ParcialArboles {
 		boolean result = true;
 		if (arbol1.hasLeftChild()) {
 			if(arbol2.hasLeftChild()) {
-				result = result && esPrefijo(arbol1.getLeftChild(), arbol2.getLeftChild());
+				result = esPrefijo(arbol1.getLeftChild(), arbol2.getLeftChild()); // aqui se devuelve un valor
 			}else
 				return false;
 			
 		}
 		if (arbol1.hasRightChild()) {
 			if(arbol2.hasRightChild()) {
-				result = result && esPrefijo(arbol1.getRightChild(), arbol2.getRightChild());
+				result = result && esPrefijo(arbol1.getRightChild(), arbol2.getRightChild());  // aqui chequea que el valor que devolvio antes sea true
 			}else
 				return false;
 			
 		}
 		return result;
 	}
-	
-	
-	public static void main(String[] args) {
-		BinaryTree<Integer> ab1 = new BinaryTree<Integer>(1);
-		BinaryTree<Integer> hijoIzquierdo = new BinaryTree<Integer>(4);
-		BinaryTree<Integer> hijoDerecho = new BinaryTree<Integer>(7);
-		
-		hijoIzquierdo.addLeftChild(new BinaryTree<Integer>(2));
-		hijoIzquierdo.addRightChild(new BinaryTree<Integer>(3));
 
+    public static void main(String[] args) {
+		BinaryTree<Integer> ab1 = new BinaryTree<Integer>(1);
+		ab1.addLeftChild(new BinaryTree<Integer>(2));
+        ab1.addRightChild(new BinaryTree<Integer>(3));
+		ab1.getLeftChild().addLeftChild(new BinaryTree<Integer>(4));
+        ab1.getLeftChild().addRightChild(new BinaryTree<Integer>(5));
 		
-		hijoDerecho.addLeftChild(new BinaryTree<Integer>(8));
-		hijoDerecho.addRightChild(new BinaryTree<Integer>(9));
-		
-		ab1.addLeftChild(hijoIzquierdo);
-		ab1.addRightChild(hijoDerecho);
-		
-		/////////////////////////////////////
+		//--------------------------------------------------------------------//
 		
 		BinaryTree<Integer> ab2 = new BinaryTree<Integer>(1);
-		BinaryTree<Integer> hijoIzquierdo2 = new BinaryTree<Integer>(4);
-		BinaryTree<Integer> hijoDerecho2 = new BinaryTree<Integer>(7);
-		
-		hijoIzquierdo.addLeftChild(new BinaryTree<Integer>(2));
-		hijoIzquierdo.addRightChild(new BinaryTree<Integer>(3));
-		
-		hijoDerecho.addLeftChild(new BinaryTree<Integer>(8));
-		hijoDerecho.addRightChild(new BinaryTree<Integer>(9));
-		
-		ab2.addLeftChild(hijoIzquierdo);
-		ab2.addRightChild(hijoDerecho);
+		ab2.addLeftChild(new BinaryTree<Integer>(2));
+        ab2.addRightChild(new BinaryTree<Integer>(3));
+		ab2.getLeftChild().addLeftChild(new BinaryTree<Integer>(4));
+        ab2.getLeftChild().addRightChild(new BinaryTree<Integer>(5));
 		
 		ParcialArboles PA = new ParcialArboles();
 		
-		System.out.println("El arbol 1 esta dentro del arbol 2 y sin iguales: " + PA.esPrefijo(ab1, ab2));
+		System.out.println("El arbol 1 esta dentro del arbol 2 y son iguales: " + PA.esPrefijo(ab1, ab2));
 	}
+
 }
