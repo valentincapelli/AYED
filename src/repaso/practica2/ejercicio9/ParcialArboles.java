@@ -18,17 +18,15 @@ public class ParcialArboles {
     }
 
     private void crearArbolData(BinaryTree<Data> tree, BinaryTree<Integer> arbol, int sum, int father){
-        if (arbol != null){
-            Data d = new Data(sum + arbol.getData(),arbol.getData() - father);
-            tree.setData(d);
-        }
+        Data d = new Data(sum + arbol.getData(),arbol.getData() - father);
+        tree.setData(d);
         if (arbol.hasLeftChild()){
             tree.addLeftChild(new BinaryTree<Data>());
-            crearArbolData(tree.getLeftChild(), arbol.getLeftChild(), tree.getData().getSum(), arbol.getData());
+            crearArbolData(tree.getLeftChild(), arbol.getLeftChild(), d.getSum(), arbol.getData());
         }
         if (arbol.hasRightChild()){
             tree.addRightChild(new BinaryTree<Data>());
-            crearArbolData(tree.getRightChild(), arbol.getRightChild(), tree.getData().getSum(), arbol.getData());
+            crearArbolData(tree.getRightChild(), arbol.getRightChild(), d.getSum(), arbol.getData());
         }
     }
 

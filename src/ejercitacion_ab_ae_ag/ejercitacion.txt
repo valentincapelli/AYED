@@ -1,0 +1,4 @@
+1.- Dado un árbol binario T cuyo recorrido postorden es A G F E B J I H C D y su recorrido inorden es 
+A B G E F D J H I C  ¿cuántos son los descendientes del nodo “C”? 
+ 
+(a)  2 (b) 1 (c) 3 (d) ninguna de las anteriores 
