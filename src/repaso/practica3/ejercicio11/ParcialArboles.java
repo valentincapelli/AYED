@@ -1,13 +1,14 @@
-package tp3.ej11;
+package repaso.practica3.ejercicio11;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import tp1.ej8.Queue;
-import tp3.ej5.GeneralTree;
-// version arreglada
+import tp3.ej3.GeneralTree;
+
 public class ParcialArboles {
-	public static boolean resolver(GeneralTree<Integer> arbol){ //que devuelve true si el Ã¡rbol es creciente, falso sino lo es
+// version vieja, version vieja en la practica 3 ejercicio11
+    public static boolean resolver(GeneralTree<Integer> arbol){ //que devuelve true si el árbol es creciente, falso sino lo es
         boolean result = true;
         Queue <GeneralTree<Integer>> queue = new Queue<GeneralTree<Integer>>();
         int cant = 0;
@@ -24,10 +25,10 @@ public class ParcialArboles {
                     queue.enqueue(child);
                 }
             } else {
-                if (cant != nivel+1){
-                    result = false;
-                }
                 if (!queue.isEmpty()){
+                    if (cant != nivel+1){
+                        result = false;
+                    }
                     nivel++;
                     cant = 0;
                     queue.enqueue(null);
@@ -36,18 +37,20 @@ public class ParcialArboles {
         }
         return result; 
     }
-	
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
 		GeneralTree<Integer> a1 = new GeneralTree<Integer>(1);
 		List<GeneralTree<Integer>> children2 = new LinkedList<GeneralTree<Integer>>();
 		children2.add(new GeneralTree<Integer>(22));
-		children2.add(new GeneralTree<Integer>(21));
-		children2.add(new GeneralTree<Integer>(23));
+		//children2.add(new GeneralTree<Integer>(21));
+		//children2.add(new GeneralTree<Integer>(23));
 		GeneralTree<Integer> a2 = new GeneralTree<Integer>(2, children2);
 		List<GeneralTree<Integer>> children = new LinkedList<GeneralTree<Integer>>();
 		children.add(a1);
 		children.add(a2);
 		GeneralTree<Integer> a = new GeneralTree<Integer>(0, children);
+
+        a.printPreOrder();
 		
 		System.out.println("Cumple el arbol? " + ParcialArboles.resolver(a));
 	}
