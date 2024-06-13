@@ -90,7 +90,7 @@ public class Mapa {
 	private boolean Contiene(List<String> ciudades, String Ciudad) {
 		boolean result = false;
 		Iterator <String> it = ciudades.iterator();
-			while (it.hasNext() && !result){
+		while (it.hasNext() && !result){
 			if (it.next().equals(Ciudad)) result = true;
 		}
 		return result;
