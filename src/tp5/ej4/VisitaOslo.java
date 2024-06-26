@@ -20,7 +20,6 @@ public class VisitaOslo {
 			if (origen != null){
 				busquedaRecursiva(lugares, origen, destino, maxTiempo, lugaresRestringidos, visitados, 0, camino);
 			}
-			
 		}
 		return camino;
 	}
