@@ -24,4 +24,12 @@ public class Data {
     public Integer getMinutos(){
         return this.minutos;
     }
+
+    @Override
+public String toString() {
+    return "Data{" +
+            "nombre='" + nombre + '\'' +
+            ", minutos=" + minutos +
+            '}';
+}
 }
